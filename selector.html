@@ -13,7 +13,7 @@ h2{font-size:17px;margin:16px 0 8px;color:#0b5fa5;border-left:5px solid #0b5fa5;
 .nums{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:6px;font-size:12px;color:#555}.nums span b{display:block;font-size:15px;color:#222}.nums .d b{color:#c0392b}.nums .g b{color:#1e8449}
 .warn{font-size:12px;color:#b9770e}.note{font-size:12px;color:#666;line-height:1.7}
 @media(max-width:600px){.grid{grid-template-columns:1fr 1fr}.nums{grid-template-columns:1fr 1fr}}
-#sum{position:sticky;top:0;z-index:5;background:#eaf2fb;border:1px solid #b8d4ee;border-radius:10px;padding:6px 10px;margin-bottom:10px;font-size:13px;line-height:1.9;color:#0b5fa5}#sum b{font-size:14px;margin-right:4px}#sum a{display:inline-block;background:#fff;border:1px solid #0b5fa5;color:#0b5fa5;border-radius:12px;padding:0 8px;margin:1px 2px;text-decoration:none;white-space:nowrap;line-height:22px}h2{scroll-margin-top:60px}
+#sum{position:sticky;top:0;z-index:5;background:#eaf2fb;border:1px solid #b8d4ee;border-radius:10px;padding:4px 6px;margin-bottom:10px;font-size:12px;line-height:1.7;color:#0b5fa5}#sum b{font-size:13px;margin-right:2px}#sum a{display:inline-block;background:#fff;border:1px solid #0b5fa5;color:#0b5fa5;border-radius:12px;padding:0 5px;margin:1px 1px;text-decoration:none;white-space:nowrap;line-height:20px}h2{scroll-margin-top:60px}
 </style></head><body><header><a href="home.html">← 商品選單</a><h1>商品選擇器</h1></header><div class="wrap">
 <div class="card grid">
 <div><label>性別</label><select id="g"><option value="1">男</option><option value="2">女</option></select></div>
@@ -41,7 +41,7 @@ function run(){const g=+$('g').value,age=+$('age').value,cf=$('cf').value,tf=$('
    const gk=c.kind=='conv'?'功能性契約轉換':(c.payYears=='age'?'繳至指定年齡':(t==1?'躉繳':t+'年期'));
    (grp[gk]=grp[gk]||[]).push({c,t,row,sd});}}
  const ord=k=>k=='躉繳'?0:k.endsWith('年期')?parseInt(k):k=='功能性契約轉換'?999:k.startsWith('年金')?998:500;
- const KS=Object.keys(grp).sort((a,b)=>ord(a)-ord(b)),SN=k=>k.replace('年期','年').replace('（建議書範例呈現）','');const tot=KS.reduce((n,k)=>n+grp[k].length,0);$('sum').innerHTML=tot?`<b>可投保 ${tot} 個</b>｜`+KS.map((k,i)=>`<a href="#grp${i}" onclick="event.preventDefault();document.getElementById('grp${i}').scrollIntoView({behavior:'smooth'})">${SN(k)} ${grp[k].length}</a>`).join(''):'<b>無符合商品</b>';
+ const KS=Object.keys(grp).sort((a,b)=>ord(a)-ord(b)),SN=k=>k.replace('年期','年').replace('繳至指定年齡','指定年齡').replace('年金／萬能（建議書範例呈現）','年金萬能').replace('功能性契約轉換','契約轉換');const tot=new Set(KS.flatMap(k=>grp[k].map(x=>x.c.code))).size;$('sum').innerHTML=tot?`<b>可投保 ${tot} 個</b>｜`+KS.map((k,i)=>`<a href="#grp${i}" onclick="event.preventDefault();document.getElementById('grp${i}').scrollIntoView({behavior:'smooth'})">${SN(k)}${grp[k].length}</a>`).join(''):'<b>無符合商品</b>';
  $('out').innerHTML=KS.map((k,i)=>`<h2 id="grp${i}">${k}（${grp[k].length}）</h2>`+grp[k].map(({c,t,row,sd})=>{
   const b=c.cur=='TWD'?bud:(c.cur=='AUD'?bud/fxa:bud/fx),u=c.cur=='TWD'?'元':c.cur;let nums='',w='',S=null;const isG=c.dividend!='分紅';
   if(row){S=Math.floor(sd.S0*b/row[0]*10)/10;if(S<row[7]){w=`預算不足最低保額 ${row[7]} 萬`;}if(S>row[8]){w=`超過最高保額 ${row[8]} 萬，以上限計`;S=row[8];}
