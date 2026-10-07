@@ -412,7 +412,7 @@
  },
  {
   "code": "PAE",
-  "name": "富邦人壽紅運年代分紅終身保險",
+  "name": "富邦人壽紅運年代分紅終身保險",
   "ver": "V2.5-1150630",
   "cur": "TWD",
   "type": "壽險",
@@ -439,7 +439,7 @@
  },
  {
   "code": "PFC",
-  "name": "富邦人壽美年紅旺外幣分紅終身保險",
+  "name": "富邦人壽美年紅旺外幣分紅終身保險",
   "ver": "V2.4-1150630",
   "cur": "USD",
   "type": "壽險",
@@ -755,7 +755,7 @@
  },
  {
   "code": "PAF",
-  "name": "富邦人壽紅運長樂增額分紅終身壽險",
+  "name": "富邦人壽紅運長樂增額分紅終身壽險",
   "ver": "V2.4-1150630",
   "cur": "TWD",
   "type": "壽險",
@@ -1017,8 +1017,7 @@
   "verified": "保費✓ 保證值✓(95年)",
   "hnw": false,
   "src": "o1.json",
-  "kind": "quote",
-  "oiuNote": "限境外客戶（國際保險業務分公司）"
+  "kind": "quote"
  },
  {
   "code": "FBP",
@@ -1226,6 +1225,221 @@
   "verified": "保費✓ 保證值✓(106年)",
   "hnw": false,
   "src": "q6.json",
+  "kind": "quote"
+ },
+ {
+  "code": "IBV",
+  "name": "富邦人壽溢起樂血利率變動型終身壽險",
+  "ver": "V1.7-1150101",
+  "cur": "TWD",
+  "type": "壽險",
+  "terms": {
+   "6": [
+    18,
+    74
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "利變",
+  "rate": "2.35%（115/9）",
+  "oiu": false,
+  "page": "IBV.html",
+  "verified": "保費△(建議書續期折扣2%含額外條件) 保證值✓(76年)",
+  "hnw": false,
+  "src": "r1.json",
+  "kind": "quote"
+ },
+ {
+  "code": "XMM",
+  "name": "富邦人壽富豐年終身保險",
+  "ver": "V1.5-1150101",
+  "cur": "TWD",
+  "type": "壽險",
+  "terms": {
+   "6": [
+    0,
+    70
+   ]
+  },
+  "payYears": "term",
+  "payout": "生存金",
+  "dividend": "固定利率",
+  "rate": null,
+  "oiu": false,
+  "page": "XMM.html",
+  "verified": "保費✓ 無總表",
+  "hnw": false,
+  "src": "r2.json",
+  "kind": "quote"
+ },
+ {
+  "code": "IBN1",
+  "name": "富邦人壽富享世代利率變動型終身壽險",
+  "ver": "V1.7-1150101",
+  "cur": "TWD",
+  "type": "壽險",
+  "terms": {
+   "6": [
+    0,
+    74
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "利變",
+  "rate": "2.35%（115/9）",
+  "oiu": false,
+  "page": "IBN1.html",
+  "verified": "保費✓ 保證值✓(76年)",
+  "hnw": false,
+  "src": "r3.json",
+  "kind": "quote"
+ },
+ {
+  "code": "FAX",
+  "name": "富邦人壽智富美家外幣利率變動型終身壽險",
+  "ver": "V2.1-1150901",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "1": [
+    0,
+    74
+   ],
+   "2": [
+    0,
+    73
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "利變",
+  "rate": null,
+  "oiu": false,
+  "page": "FAX.html",
+  "verified": "保費✓ 保證值✓(81年)",
+  "hnw": false,
+  "src": "r4.json",
+  "kind": "quote"
+ },
+ {
+  "code": "IBZ",
+  "name": "富邦人壽富利傳家利率變動型終身壽險",
+  "ver": "V1.8-1150101",
+  "cur": "TWD",
+  "type": "壽險",
+  "terms": {
+   "1": [
+    0,
+    70
+   ],
+   "2": [
+    0,
+    70
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "利變",
+  "rate": "2.45%（115/10）",
+  "oiu": false,
+  "page": "IBZ.html",
+  "verified": "保費✓ 保證值✓(108年)",
+  "hnw": false,
+  "src": "r5.json",
+  "kind": "quote"
+ },
+ {
+  "code": "ICD",
+  "name": "富邦人壽豐盛年年利率變動型終身保險",
+  "ver": "V1.6-1150101",
+  "cur": "TWD",
+  "type": "壽險",
+  "terms": {
+   "2": [
+    0,
+    78
+   ]
+  },
+  "payYears": "term",
+  "payout": "生存金",
+  "dividend": "利變",
+  "rate": "2.45%（115/10）",
+  "oiu": false,
+  "page": "ICD.html",
+  "verified": "保費✓ 保證值✓(44年)",
+  "hnw": false,
+  "src": "r6.json",
+  "kind": "quote"
+ },
+ {
+  "code": "IBS",
+  "name": "富邦人壽富貴樂齡利率變動型終身壽險",
+  "ver": "V1.7-1150101",
+  "cur": "TWD",
+  "type": "壽險",
+  "terms": {
+   "7": [
+    50,
+    73
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "利變",
+  "rate": "2.35%（115/9）",
+  "oiu": false,
+  "page": "IBS.html",
+  "verified": "保費△(建議書續期折扣3.5%含額外條件) 保證值✓(41年)",
+  "hnw": false,
+  "src": "r7.json",
+  "kind": "quote"
+ },
+ {
+  "code": "FAT",
+  "name": "富邦人壽美滿鑽外幣利率變動型增額終身壽險",
+  "ver": "V1.9-1150901",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "1": [
+    0,
+    86
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "利變",
+  "rate": null,
+  "oiu": false,
+  "page": "FAT.html",
+  "verified": "保費✓ 保證值✓(50年)",
+  "hnw": false,
+  "src": "r8.json",
+  "kind": "quote"
+ },
+ {
+  "code": "FAK1",
+  "name": "富邦人壽美滿世代外幣利率變動型終身壽險",
+  "ver": "V2.0-1150901",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "6": [
+    0,
+    74
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "利變",
+  "rate": "3.95%（115/10）",
+  "oiu": false,
+  "page": "FAK1.html",
+  "verified": "保費✓ 保證值✓(83年)",
+  "hnw": false,
+  "src": "r9.json",
   "kind": "quote"
  },
  {
