@@ -1,0 +1,898 @@
+[
+ {
+  "code": "PFP",
+  "name": "富邦人壽尊榮紅富外幣分紅終身壽險",
+  "ver": "V1.5-1150630",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "1": [
+    0,
+    80
+   ],
+   "2": [
+    0,
+    78
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "分紅",
+  "modes": [
+   "PUA",
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PFP.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": true,
+  "src": "h1.json"
+ },
+ {
+  "code": "FPC",
+  "name": "富邦人壽尊榮傳世外幣分紅終身壽險",
+  "ver": "V1.1-1150824",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "1": [
+    0,
+    80
+   ],
+   "2": [
+    0,
+    78
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "分紅",
+  "modes": [
+   "PUA",
+   "SAVE",
+   "CASH"
+  ],
+  "page": "FPC.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": true,
+  "src": "h2.json"
+ },
+ {
+  "code": "PFE",
+  "name": "富邦人壽雙美紅運外幣分紅終身保險",
+  "ver": "V2.4-1150630",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "2": [
+    0,
+    70
+   ]
+  },
+  "payYears": "term",
+  "payout": "生存金",
+  "dividend": "分紅",
+  "modes": [
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PFE.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "k1.json"
+ },
+ {
+  "code": "PFH",
+  "name": "富邦人壽美紅大吉外幣分紅終身壽險",
+  "ver": "V2.4-1150630",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "7": [
+    0,
+    70
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "分紅",
+  "modes": [
+   "PUA",
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PFH.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "k2.json"
+ },
+ {
+  "code": "PFF",
+  "name": "富邦人壽福星雙盈外幣分紅終身保險",
+  "ver": "V2.4-1150630",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "2": [
+    0,
+    70
+   ]
+  },
+  "payYears": "term",
+  "payout": "生存金",
+  "dividend": "分紅",
+  "modes": [
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PFF.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "k3.json"
+ },
+ {
+  "code": "PFD",
+  "name": "富邦人壽紅富美好外幣分紅終身壽險",
+  "ver": "V2.4-1150630",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "10": [
+    0,
+    69
+   ],
+   "20": [
+    0,
+    60
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "分紅",
+  "modes": [
+   "PUA",
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PFD.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "k4.json"
+ },
+ {
+  "code": "PAG",
+  "name": "富邦人壽紅運多多分紅終身保險",
+  "ver": "V2.5-1150630",
+  "cur": "TWD",
+  "type": "壽險",
+  "terms": {
+   "3": [
+    0,
+    70
+   ]
+  },
+  "payYears": "term",
+  "payout": "生存金",
+  "dividend": "分紅",
+  "modes": [
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PAG.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "k5.json"
+ },
+ {
+  "code": "PAE",
+  "name": "富邦人壽紅運年代分紅終身保險",
+  "ver": "V2.5-1150630",
+  "cur": "TWD",
+  "type": "壽險",
+  "terms": {
+   "10": [
+    0,
+    65
+   ],
+   "20": [
+    0,
+    55
+   ]
+  },
+  "payYears": "term",
+  "payout": "生存金",
+  "dividend": "分紅",
+  "modes": [
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PAE.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "k6.json"
+ },
+ {
+  "code": "PFC",
+  "name": "富邦人壽美年紅旺外幣分紅終身保險",
+  "ver": "V2.4-1150630",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "3": [
+    0,
+    70
+   ],
+   "6": [
+    0,
+    70
+   ]
+  },
+  "payYears": "term",
+  "payout": "生存金",
+  "dividend": "分紅",
+  "modes": [
+   "PUA",
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PFC.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "k7.json"
+ },
+ {
+  "code": "PFG",
+  "name": "富邦人壽星美富足外幣分紅終身壽險",
+  "ver": "V2.5-1150630",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "1": [
+    0,
+    70
+   ],
+   "2": [
+    0,
+    70
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "分紅",
+  "modes": [
+   "PUA",
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PFG.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "k8.json"
+ },
+ {
+  "code": "PAC",
+  "name": "富邦人壽紅旺年年分紅終身保險",
+  "ver": "V2.4-1150630",
+  "cur": "TWD",
+  "type": "壽險",
+  "terms": {
+   "6": [
+    0,
+    70
+   ]
+  },
+  "payYears": "term",
+  "payout": "生存金",
+  "dividend": "分紅",
+  "modes": [
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PAC.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "k9.json"
+ },
+ {
+  "code": "PALC",
+  "name": "富邦人壽活利優退分紅終身保險",
+  "ver": "V1.3-1150630",
+  "cur": "TWD",
+  "type": "壽險",
+  "terms": {
+   "3": [
+    0,
+    59
+   ],
+   "6": [
+    0,
+    59
+   ]
+  },
+  "payYears": "term",
+  "payout": "生存金",
+  "dividend": "分紅",
+  "modes": [
+   "PUA",
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PALC.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "m1.json"
+ },
+ {
+  "code": "PF65",
+  "name": "富邦人壽美富優退外幣分紅終身保險",
+  "ver": "V2.5-1150630",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "3": [
+    0,
+    59
+   ],
+   "6": [
+    0,
+    59
+   ]
+  },
+  "payYears": "term",
+  "payout": "生存金",
+  "dividend": "分紅",
+  "modes": [
+   "PUA",
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PF65.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "m10.json"
+ },
+ {
+  "code": "PFI",
+  "name": "富邦人壽紅運滿滿外幣分紅終身保險",
+  "ver": "V2.4-1150630",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "10": [
+    0,
+    65
+   ],
+   "20": [
+    0,
+    55
+   ]
+  },
+  "payYears": "term",
+  "payout": "生存金",
+  "dividend": "分紅",
+  "modes": [
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PFI.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "m11.json"
+ },
+ {
+  "code": "PAK",
+  "name": "富邦人壽月月紅富分紅終身保險",
+  "ver": "V1.5-1150630",
+  "cur": "TWD",
+  "type": "壽險",
+  "terms": {
+   "2": [
+    0,
+    70
+   ]
+  },
+  "payYears": "term",
+  "payout": "生存金",
+  "dividend": "分紅",
+  "modes": [
+   "PUA",
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PAK.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "m12.json"
+ },
+ {
+  "code": "PFNC",
+  "name": "富邦人壽紅運優外幣分紅終身保險",
+  "ver": "V1.2-1150630",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "10": [
+    0,
+    55
+   ],
+   "20": [
+    0,
+    45
+   ]
+  },
+  "payYears": "term",
+  "payout": "生存金",
+  "dividend": "分紅",
+  "modes": [
+   "PUA",
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PFNC.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "m2.json"
+ },
+ {
+  "code": "PFO",
+  "name": "富邦人壽美滿富外幣分紅終身保險",
+  "ver": "V1.2-1150630",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "6": [
+    0,
+    70
+   ],
+   "10": [
+    0,
+    65
+   ],
+   "20": [
+    0,
+    55
+   ]
+  },
+  "payYears": "term",
+  "payout": "生存金",
+  "dividend": "分紅",
+  "modes": [
+   "PUA",
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PFO.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "m3.json"
+ },
+ {
+  "code": "PFU",
+  "name": "富邦人壽美滿長紅外幣分紅終身壽險",
+  "ver": "V1.4-1150630",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "1": [
+    0,
+    85
+   ],
+   "2": [
+    0,
+    80
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "分紅",
+  "modes": [
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PFU.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "m4.json"
+ },
+ {
+  "code": "PAO",
+  "name": "富邦人壽富裕長紅增額分紅終身壽險",
+  "ver": "V1.2-1150630",
+  "cur": "TWD",
+  "type": "壽險",
+  "terms": {
+   "1": [
+    0,
+    75
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "分紅",
+  "modes": [
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PAO.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "m5.json"
+ },
+ {
+  "code": "PFVD",
+  "name": "富邦人壽美年加鑫外幣分紅終身保險",
+  "ver": "V1.2-1150630",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "2": [
+    0,
+    33
+   ],
+   "6": [
+    0,
+    29
+   ]
+  },
+  "payYears": "term",
+  "payout": "生存金",
+  "dividend": "分紅",
+  "modes": [
+   "PUA",
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PFVD.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "m6.json"
+ },
+ {
+  "code": "PAF",
+  "name": "富邦人壽紅運長樂增額分紅終身壽險",
+  "ver": "V2.4-1150630",
+  "cur": "TWD",
+  "type": "壽險",
+  "terms": {
+   "6": [
+    0,
+    75
+   ],
+   "10": [
+    0,
+    70
+   ],
+   "20": [
+    0,
+    60
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "分紅",
+  "modes": [
+   "PUA",
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PAF.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "m7.json"
+ },
+ {
+  "code": "PAI",
+  "name": "富邦人壽鴻運久久分紅終身壽險",
+  "ver": "V2.4-1150630",
+  "cur": "TWD",
+  "type": "壽險",
+  "terms": {
+   "6": [
+    0,
+    64
+   ],
+   "10": [
+    0,
+    60
+   ],
+   "20": [
+    0,
+    50
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "分紅",
+  "modes": [
+   "PUA",
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PAI.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "m8.json"
+ },
+ {
+  "code": "PAJ",
+  "name": "富邦人壽優富年年分紅養老保險",
+  "ver": "V2.4-1150630",
+  "cur": "TWD",
+  "type": "養老",
+  "terms": {
+   "55": [
+    0,
+    49
+   ],
+   "60": [
+    0,
+    54
+   ],
+   "65": [
+    0,
+    59
+   ]
+  },
+  "payYears": "age",
+  "payout": "生存金",
+  "dividend": "分紅",
+  "modes": [
+   "PUA",
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PAJ.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "m9.json"
+ },
+ {
+  "code": "PFWC",
+  "name": "富邦人壽美好優退外幣分紅終身保險",
+  "ver": "V1.2-1150630",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "6": [
+    0,
+    54
+   ]
+  },
+  "payYears": "term",
+  "payout": "生存金",
+  "dividend": "分紅",
+  "modes": [
+   "PUA",
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PFWC.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "n1.json"
+ },
+ {
+  "code": "PAN",
+  "name": "富邦人壽享滿富分紅終身保險",
+  "ver": "V1.2-1150630",
+  "cur": "TWD",
+  "type": "壽險",
+  "terms": {
+   "6": [
+    0,
+    70
+   ],
+   "10": [
+    0,
+    65
+   ],
+   "20": [
+    0,
+    55
+   ]
+  },
+  "payYears": "term",
+  "payout": "生存金",
+  "dividend": "分紅",
+  "modes": [
+   "PUA",
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PAN.html",
+  "verified": "保費△(建議書含集彙折扣) 數值✓",
+  "hnw": false,
+  "src": "n2.json"
+ },
+ {
+  "code": "PAP",
+  "name": "富邦人壽紅富年年分紅終身保險",
+  "ver": "V1.1-1150630",
+  "cur": "TWD",
+  "type": "壽險",
+  "terms": {
+   "2": [
+    0,
+    80
+   ]
+  },
+  "payYears": "term",
+  "payout": "生存金",
+  "dividend": "分紅",
+  "modes": [
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PAP.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "n3.json"
+ },
+ {
+  "code": "PFZA",
+  "name": "富邦人壽美滿豐年外幣分紅終身保險",
+  "ver": "V1.1-1150630",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "6": [
+    0,
+    34
+   ]
+  },
+  "payYears": "term",
+  "payout": "生存金",
+  "dividend": "分紅",
+  "modes": [
+   "PUA",
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PFZA.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "n4.json"
+ },
+ {
+  "code": "PFT",
+  "name": "富邦人壽雙盈人生外幣分紅終身壽險",
+  "ver": "V1.0-1150615",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "10": [
+    0,
+    60
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "分紅",
+  "modes": [
+   "SAVE",
+   "CASH"
+  ],
+  "page": "PFT.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "n5.json"
+ },
+ {
+  "code": "FPB",
+  "name": "富邦人壽恆美富足外幣分紅終身壽險",
+  "ver": "V1.0-1150724",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "1": [
+    0,
+    85
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "分紅",
+  "modes": [
+   "PUA",
+   "SAVE",
+   "CASH"
+  ],
+  "page": "FPB.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false,
+  "src": "n6.json"
+ },
+ {
+  "code": "PFK",
+  "name": "富邦人壽智富紅運外幣分紅終身壽險",
+  "ver": "V2.7-1150630",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "1": [
+    0,
+    80
+   ],
+   "2": [
+    0,
+    78
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "分紅",
+  "page": "PFK.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false
+ },
+ {
+  "code": "PFA",
+  "name": "富邦人壽美富紅運外幣分紅終身壽險",
+  "ver": "V2.6-1150413",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "3": [
+    0,
+    75
+   ],
+   "6": [
+    0,
+    75
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "分紅",
+  "page": "PFA.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false
+ },
+ {
+  "code": "PFJ",
+  "name": "富邦人壽美富紅盈外幣分紅終身壽險",
+  "ver": "V1.0-1150608",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "6": [
+    0,
+    76
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "分紅",
+  "page": "PFJ.html",
+  "verified": "保費✓ 數值✓",
+  "hnw": false
+ },
+ {
+  "code": "FBO",
+  "name": "富邦人壽美利大運外幣利率變動型終身壽險",
+  "ver": "V1.6-1150901",
+  "cur": "USD",
+  "type": "壽險",
+  "terms": {
+   "2": [
+    16,
+    74
+   ],
+   "6": [
+    16,
+    74
+   ],
+   "8": [
+    16,
+    72
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "利變",
+  "page": "FBO.html",
+  "verified": "宣告利率情境✓(16歲以上)",
+  "hnw": false,
+  "rate": "4.35%（115/10）"
+ }
+]
