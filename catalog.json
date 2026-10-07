@@ -1443,6 +1443,129 @@
   "kind": "quote"
  },
  {
+  "code": "IAP",
+  "name": "富邦人壽吉鑽利利率變動型還本終身保險",
+  "ver": "V2.7-1150101",
+  "cur": "TWD",
+  "type": "壽險",
+  "terms": {
+   "6": [
+    0,
+    75
+   ]
+  },
+  "payYears": "term",
+  "payout": "生存金",
+  "dividend": "利變",
+  "rate": "2.30%（115/1，建議書）",
+  "oiu": false,
+  "page": "IAP.html",
+  "verified": "保費✓ 保證值✓(84年)",
+  "hnw": false,
+  "src": "s1.json",
+  "kind": "quote"
+ },
+ {
+  "code": "IBC",
+  "name": "富邦人壽珍給利利率變動型增額終身壽險",
+  "ver": "V2.4-1150101",
+  "cur": "TWD",
+  "type": "壽險",
+  "terms": {
+   "2": [
+    0,
+    78
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "利變",
+  "rate": "2.35%（115/9）",
+  "oiu": false,
+  "page": "IBC.html",
+  "verified": "保費✓ 保證值✓(84年)",
+  "hnw": false,
+  "src": "s2.json",
+  "kind": "quote"
+ },
+ {
+  "code": "IBP",
+  "name": "富邦人壽吉利好運利率變動型增額終身壽險",
+  "ver": "V1.9-1150101",
+  "cur": "TWD",
+  "type": "壽險",
+  "terms": {
+   "7": [
+    0,
+    73
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "利變",
+  "rate": "2.30%（115/10）",
+  "oiu": false,
+  "page": "IBP.html",
+  "verified": "保費✓ 保證值✓(107年)",
+  "hnw": false,
+  "src": "s3.json",
+  "kind": "quote"
+ },
+ {
+  "code": "XML1",
+  "name": "富邦人壽新豐吉年年終身保險",
+  "ver": "V1.7-1150101",
+  "cur": "TWD",
+  "type": "壽險",
+  "terms": {
+   "6": [
+    0,
+    75
+   ]
+  },
+  "payYears": "term",
+  "payout": "生存金",
+  "dividend": "固定利率",
+  "rate": null,
+  "oiu": false,
+  "page": "XML1.html",
+  "verified": "保費✓ 無總表",
+  "hnw": false,
+  "src": "s4.json",
+  "kind": "quote"
+ },
+ {
+  "code": "IAT2",
+  "name": "富邦人壽新吉好利利率變動型增額終身壽險",
+  "ver": "V1.9-1150101",
+  "cur": "TWD",
+  "type": "壽險",
+  "terms": {
+   "6": [
+    0,
+    75
+   ],
+   "10": [
+    0,
+    70
+   ],
+   "20": [
+    0,
+    60
+   ]
+  },
+  "payYears": "term",
+  "payout": "累積型",
+  "dividend": "利變",
+  "rate": "2.30%（115/10）",
+  "oiu": false,
+  "page": "IAT2.html",
+  "verified": "保費✓ 保證值✓(84年)",
+  "hnw": false,
+  "src": "s5.json",
+  "kind": "quote"
+ },
+ {
   "code": "PFK",
   "name": "富邦人壽智富紅運外幣分紅終身壽險",
   "ver": "V2.7-1150630",
