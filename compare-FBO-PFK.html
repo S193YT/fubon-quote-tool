@@ -29,13 +29,13 @@ td.cd{color:#a93226;font-weight:bold}td.cg{color:#1e8449;font-weight:bold}td.win
 <div id="bw"><label>總保費預算(美元,折扣前)</label><input id="bud" type="number" inputmode="decimal" value="100000"></div>
 </div></div>
 <div class="two">
-<div class="card gA"><h3 class="pA">A｜美利大運 FBO（利率變動型）</h3><div class="grid">
+<div class="card gA"><h3 class="pA">FBO｜美利大運（利率變動型）</h3><div class="grid">
 <div><label>繳費年期</label><select id="ta"><option value="2">2年期</option><option value="6" selected>6年期</option><option value="8">8年期</option></select></div>
 <div class="sw"><label>保額(萬美元)</label><input id="sa" type="number" inputmode="decimal" value="50" step="0.1"></div>
 <div><label>宣告利率(%)</label><input id="decl" type="number" inputmode="decimal" value="4.25" step="0.01"></div>
 <div><label>情境</label><select id="sca"><option value="0">依宣告利率</option><option value="1">宣告利率−1%</option></select></div>
 </div></div>
-<div class="card gB"><h3 class="pB">B｜智富紅運 PFK（分紅）</h3><div class="grid">
+<div class="card gB"><h3 class="pB">PFK｜智富紅運（分紅）</h3><div class="grid">
 <div><label>繳費年期</label><select id="tb"><option value="1">躉繳</option><option value="2">2年期</option></select></div>
 <div class="sw"><label>保額(萬美元)</label><input id="sb" type="number" inputmode="decimal" value="28.9" step="0.1"></div>
 <div><label>紅利情境</label><select id="scb"><option value="2">最可能紅利(中)</option><option value="1">較低紅利</option><option value="0">保證(不含紅利)</option></select></div>
@@ -43,7 +43,7 @@ td.cd{color:#a93226;font-weight:bold}td.cg{color:#1e8449;font-weight:bold}td.win
 <div class="card"><div id="msg" class="err"></div><div id="sum"></div></div>
 <div class="card"><canvas id="ch"></canvas></div>
 <div class="card"><div class="row"><input type="checkbox" id="keyonly" checked><label for="keyonly" style="margin:0">只顯示重點年度（1~10、每5年、每10歲）</label></div>
-<div class="tw"><table><thead><tr><th rowspan="2">年度<br>(年齡)</th><th colspan="7" class="A">A｜FBO</th><th colspan="7" class="B">B｜PFK</th></tr>
+<div class="tw"><table><thead><tr><th rowspan="2">年度<br>(年齡)</th><th colspan="7" class="A">FBO</th><th colspan="7" class="B">PFK</th></tr>
 <tr><th class="A">累計保費</th><th class="A">身故總額</th><th class="A">壽險倍數</th><th class="A">解約總額</th><th class="A">年增率</th><th class="A">總報酬率</th><th class="A">IRR</th>
 <th class="B">累計保費</th><th class="B">身故總額</th><th class="B">壽險倍數</th><th class="B">解約總額</th><th class="B">年增率</th><th class="B">總報酬率</th><th class="B">IRR</th></tr></thead><tbody id="tbd"></tbody></table></div></div>
 <div class="card note">‧綠底＝該年度兩商品中較高者（身故總額、壽險倍數、解約總額、總報酬率、IRR）。損益兩平年度＝解約總額首次 ≥ 累計實繳保費之保單年度。<br>
@@ -94,7 +94,7 @@ function run(){
   const card=(q,n,c)=>`<div class="hcards" style="margin-bottom:10px"><div class="hc n"><small>${n} 保額 / 年繳實繳</small><b>${q.S.toFixed(1)}萬</b><small>${fmt(q.p1*k)}${q.term>1?'×'+q.term+'年':''} ${u}｜總繳 ${fmt(q.tot*k)}</small></div><div class="hc n"><small>${n} 損益兩平</small><b>${q.be?'第'+q.be.t+'年':'—'}</b><small>${q.be?q.be.age+'歲':''}</small></div>`+
     yrs.map(t=>`<div class="hc d"><small>${n} 身故 第${t}年</small><b>${fmt(at(q,t).W*k)}</b><small>${at(q,t).m.toFixed(2)} 倍</small></div>`).join('')+
     [10,20,30].filter(t=>t<=q.rows.length).map(t=>`<div class="hc g"><small>${n} 年增率 第${t}年</small><b>${pp(at(q,t).gr)||'—'}</b><small>IRR ${pp(at(q,t).irr)||'—'}</small></div>`).join('')+'</div>';
-  $('sum').innerHTML='<h3 class="pA">A｜FBO</h3>'+card(A,'A','pA')+'<h3 class="pB">B｜PFK</h3>'+card(B,'B','pB');
+  $('sum').innerHTML='<h3 class="pA">FBO</h3>'+card(A,'FBO','pA')+'<h3 class="pB">PFK</h3>'+card(B,'PFK','pB');
   const n=Math.max(A.rows.length,B.rows.length),ko=$('keyonly').checked;let h='';
   const c=(v,o,f2,cls)=>`<td class="${cls||''}${v!=null&&o!=null&&v>o?' win':''}">${f2(v)}</td>`;
   for(let t=1;t<=n;t++){const a=A.rows[t-1],b=B.rows[t-1],r=a||b,hl=t<=10||t%5==0||r.age%10==0;if(ko&&!hl)continue;
@@ -107,9 +107,9 @@ function draw(A,B,k,u){const c=$('ch'),dpr=window.devicePixelRatio||1,W=c.client
   const sh=v=>v>=1e8?(v/1e8).toFixed(1)+'億':v>=1e4?Math.round(v/1e4)+'萬':Math.round(v);x.font='11px sans-serif';x.strokeStyle='#ddd';x.fillStyle='#555';
   for(let i=0;i<=4;i++){const y=H-Bt-(H-Bt-T)*i/4;x.beginPath();x.moveTo(L,y);x.lineTo(W-6,y);x.stroke();x.fillText(sh(mx*i/4),2,y+4);}
   for(let i=0;i<n;i++){const a=a0+i;if(a%(nar?20:10)==0)x.fillText(a+'歲',L+(W-L-6)*i/(n-1)-10,H-6);}
-  const nm=['A身故','A解約','B身故','B解約'];
+  const nm=['FBO身故','FBO解約','PFK身故','PFK解約'];
   ser.forEach((s,j)=>{x.strokeStyle=s[2];x.setLineDash(s[3]);x.lineWidth=2;x.beginPath();s[0].rows.forEach((r,i)=>{const X=L+(W-L-6)*i/(n-1),Y=H-Bt-(H-Bt-T)*r[s[1]]*k/mx;i?x.lineTo(X,Y):x.moveTo(X,Y)});x.stroke();x.setLineDash([]);
-    const lx=nar?8+(j%2)*(W/2):L+10+j*95,ly=nar?8+Math.floor(j/2)*16:8;x.strokeStyle=s[2];x.setLineDash(s[3]);x.beginPath();x.moveTo(lx,ly+5);x.lineTo(lx+18,ly+5);x.stroke();x.setLineDash([]);x.fillStyle='#333';x.fillText(nm[j],lx+22,ly+9);});
+    const lx=nar?8+(j%2)*(W/2):L+10+j*110,ly=nar?8+Math.floor(j/2)*16:8;x.strokeStyle=s[2];x.setLineDash(s[3]);x.beginPath();x.moveTo(lx,ly+5);x.lineTo(lx+18,ly+5);x.stroke();x.setLineDash([]);x.fillStyle='#333';x.fillText(nm[j],lx+22,ly+9);});
   x.fillText('單位：'+u+'（實線身故、虛線解約）',nar?8:W-220,nar?46:26);}
 const setCur=v=>{cur=v;$('bU').classList.toggle('on',v=='USD');$('bT').classList.toggle('on',v=='TWD');run();};
 $('bU').onclick=()=>setCur('USD');$('bT').onclick=()=>setCur('TWD');
