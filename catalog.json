@@ -63,7 +63,7 @@
   "rate": "2.60%（115/10）",
   "oiu": false,
   "page": "ICK.html",
-  "verified": "保費✓ 保證值✓(111年)",
+  "verified": "保費✓ 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": false,
   "src": "f1.json",
   "kind": "quote"
@@ -136,7 +136,7 @@
   "rate": "4.35%（115/10）",
   "oiu": false,
   "page": "FBX.html",
-  "verified": "保費✓ 保證值✓(45年)",
+  "verified": "保費✓ 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": false,
   "src": "f4.json",
   "kind": "quote"
@@ -182,7 +182,7 @@
   "rate": "2.60%（115/10）",
   "oiu": false,
   "page": "ICI.html",
-  "verified": "保費✓ 保證值✓(110年)",
+  "verified": "保費✓ 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": false,
   "src": "f6.json",
   "kind": "quote"
@@ -259,7 +259,7 @@
   "rate": "4.35%（115/10）",
   "oiu": false,
   "page": "FBU.html",
-  "verified": "保費✓ 保證值✓(111年)",
+  "verified": "保費✓ 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": true,
   "src": "h3.json",
   "kind": "quote"
@@ -286,7 +286,7 @@
   "rate": "4.35%（115/10）",
   "oiu": false,
   "page": "FBS.html",
-  "verified": "保費✓ 保證值✓(109年)",
+  "verified": "保費✓ 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": true,
   "src": "h4.json",
   "kind": "quote"
@@ -1014,7 +1014,7 @@
   "rate": "4.25%（2026/1，建議書）",
   "oiu": true,
   "page": "OIB.html",
-  "verified": "保費✓ 保證值✓(95年)",
+  "verified": "保費✓ 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": false,
   "src": "o1.json",
   "kind": "quote"
@@ -1045,7 +1045,7 @@
   "rate": "3.90%（115/10）",
   "oiu": false,
   "page": "FBP.html",
-  "verified": "保費✓ 保證值✓(110年)",
+  "verified": "保費✓ 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": false,
   "src": "o2.json",
   "kind": "quote"
@@ -1068,7 +1068,7 @@
   "rate": "4.35%（115/10）",
   "oiu": false,
   "page": "FBQ.html",
-  "verified": "保費✓ 保證值✓(70年)",
+  "verified": "保費✓ 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": false,
   "src": "o3.json",
   "kind": "quote"
@@ -1118,7 +1118,7 @@
   "rate": "4.25%（115/10）",
   "oiu": false,
   "page": "FAZ.html",
-  "verified": "保費✓ 保證值✓(107年)",
+  "verified": "保費✓ 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": false,
   "src": "q2.json",
   "kind": "quote"
@@ -1164,7 +1164,7 @@
   "rate": "2.60%（115/10）",
   "oiu": false,
   "page": "ICH.html",
-  "verified": "保費✓ 保證值✓(46年)",
+  "verified": "保費✓ 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": false,
   "src": "q4.json",
   "kind": "quote"
@@ -1195,7 +1195,7 @@
   "rate": "4.15%（115/10）",
   "oiu": false,
   "page": "FBM.html",
-  "verified": "保費✓ 保證值✓(95年)",
+  "verified": "保費✓ 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": false,
   "src": "q5.json",
   "kind": "quote"
@@ -1222,7 +1222,7 @@
   "rate": "3.50%（115/9）",
   "oiu": false,
   "page": "FBN.html",
-  "verified": "保費✓ 保證值✓(106年)",
+  "verified": "保費✓ 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": false,
   "src": "q6.json",
   "kind": "quote"
@@ -1245,7 +1245,7 @@
   "rate": "2.35%（115/9）",
   "oiu": false,
   "page": "IBV.html",
-  "verified": "保費△(建議書續期折扣2%含額外條件) 保證值✓(76年)",
+  "verified": "保費△(建議書含額外折扣條件) 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": false,
   "src": "r1.json",
   "kind": "quote"
@@ -1291,7 +1291,7 @@
   "rate": "2.35%（115/9）",
   "oiu": false,
   "page": "IBN1.html",
-  "verified": "保費✓ 保證值✓(76年)",
+  "verified": "保費✓ 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": false,
   "src": "r3.json",
   "kind": "quote"
@@ -1315,10 +1315,10 @@
   "payYears": "term",
   "payout": "累積型",
   "dividend": "利變",
-  "rate": null,
+  "rate": "4.10%（115/9，建議書）",
   "oiu": false,
   "page": "FAX.html",
-  "verified": "保費✓ 保證值✓(81年)",
+  "verified": "保費✓ 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": false,
   "src": "r4.json",
   "kind": "quote"
@@ -1345,7 +1345,7 @@
   "rate": "2.45%（115/10）",
   "oiu": false,
   "page": "IBZ.html",
-  "verified": "保費✓ 保證值✓(108年)",
+  "verified": "保費✓ 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": false,
   "src": "r5.json",
   "kind": "quote"
@@ -1368,7 +1368,7 @@
   "rate": "2.45%（115/10）",
   "oiu": false,
   "page": "ICD.html",
-  "verified": "保費✓ 保證值✓(44年)",
+  "verified": "保費✓ 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": false,
   "src": "r6.json",
   "kind": "quote"
@@ -1391,7 +1391,7 @@
   "rate": "2.35%（115/9）",
   "oiu": false,
   "page": "IBS.html",
-  "verified": "保費△(建議書續期折扣3.5%含額外條件) 保證值✓(41年)",
+  "verified": "保費△(建議書含額外折扣條件) 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": false,
   "src": "r7.json",
   "kind": "quote"
@@ -1411,10 +1411,10 @@
   "payYears": "term",
   "payout": "累積型",
   "dividend": "利變",
-  "rate": null,
+  "rate": "3.80%（115/9，建議書）",
   "oiu": false,
   "page": "FAT.html",
-  "verified": "保費✓ 保證值✓(50年)",
+  "verified": "保費✓ 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": false,
   "src": "r8.json",
   "kind": "quote"
@@ -1437,7 +1437,7 @@
   "rate": "3.95%（115/10）",
   "oiu": false,
   "page": "FAK1.html",
-  "verified": "保費✓ 保證值✓(83年)",
+  "verified": "保費✓ 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": false,
   "src": "r9.json",
   "kind": "quote"
@@ -1460,7 +1460,7 @@
   "rate": "2.30%（115/1，建議書）",
   "oiu": false,
   "page": "IAP.html",
-  "verified": "保費✓ 保證值✓(84年)",
+  "verified": "保費✓ 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": false,
   "src": "s1.json",
   "kind": "quote"
@@ -1483,7 +1483,7 @@
   "rate": "2.35%（115/9）",
   "oiu": false,
   "page": "IBC.html",
-  "verified": "保費✓ 保證值✓(84年)",
+  "verified": "保費✓ 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": false,
   "src": "s2.json",
   "kind": "quote"
@@ -1506,7 +1506,7 @@
   "rate": "2.30%（115/10）",
   "oiu": false,
   "page": "IBP.html",
-  "verified": "保費✓ 保證值✓(107年)",
+  "verified": "保費✓ 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": false,
   "src": "s3.json",
   "kind": "quote"
@@ -1560,7 +1560,7 @@
   "rate": "2.30%（115/10）",
   "oiu": false,
   "page": "IAT2.html",
-  "verified": "保費✓ 保證值✓(84年)",
+  "verified": "保費✓ 增值回饋分享金✓(建議書+LibreOffice重算3情境逐年相符)",
   "hnw": false,
   "src": "s5.json",
   "kind": "quote"
