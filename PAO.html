@@ -81,18 +81,18 @@ const ENG={
  // interest-sensitive (verified vs 計算 sheet logic): sc = declared rate; mode PUA(全期增額) / PS(前P4年增額,後儲存生息) / PC(前P4年增額,後現金給付)
  quoteIsr(M,D,g,age,term,S,decl,mode,p1,p2,eff){
   const cu=x=>Math.ceil(Math.round(x*1e9)/1e9),rh=ENG.rh,r10=x=>Math.ceil(Math.round(x*1e13)/1e3)/1e10,R10=x=>Math.round(x*1e10)/1e10,k=ENG.key(M,g,age,term),as=M.assumed;
-  const diff=Math.max(0,RND(RND(Math.max(decl,as),4)-as,5)),ymax=M.maxAge-age+1,SV=D.SRV&&D.SRV[k],payN=M.payYears=='term'?term:term-age;
+  const DL=t=>typeof decl=='function'?decl(t):decl,dF=t=>Math.max(0,RND(RND(Math.max(DL(t),as),4)-as,5)),ymax=M.maxAge-age+1,SV=D.SRV&&D.SRV[k],payN=M.payYears=='term'?term:term-age;
   const JA=M.p4a??16,P4=mode=='PUA'?ymax:Math.max(JA-age,M.p4m??6);
   const E=eff?new Date(eff+'T00:00:00Z'):new Date(Date.UTC(new Date().getFullYear(),new Date().getMonth(),new Date().getDate()));
   const ed=E.getUTCDate(),DAY=864e5,dim=(y,m)=>new Date(Date.UTC(y,m+1,0)).getUTCDate();
   const BDj=j=>{const y=E.getUTCFullYear(),m=E.getUTCMonth()+j;return new Date(Date.UTC(y,m,Math.min(ed,dim(y,m))));};
   const rates=j=>{const bd=BDj(j),bc=new Date(Date.UTC(bd.getUTCFullYear(),bd.getUTCMonth(),1)),be=new Date(Date.UTC(bd.getUTCFullYear(),bd.getUTCMonth()+1,0));
-    const BF=bc<E?0:Math.round((bd-bc)/DAY),BG=Math.round((be-bd)/DAY)+1,BH=BF+BG;return [R10(decl*BF/365),R10(decl*BG/365),R10(decl*BH/365)];};
+    const BF=bc<E?0:Math.round((bd-bc)/DAY),BG=Math.round((be-bd)/DAY)+1,BH=BF+BG;const dd=DL(Math.ceil(j/12));return [R10(dd*BF/365),R10(dd*BG/365),R10(dd*BH/365)];};
   const rdn=x=>{const L=String(Math.floor(Math.abs(x))).length,d=L<=5?10:15-L;return Math.floor(Math.round(x*10**d*1e3)/1e3)/10**d;};
   const TW=!!M.kRound,AD=M.accDig||10,RA=x=>Math.round(x*10**AD)/10**AD,JD=M.juvDig||10,RJ=x=>Math.round(x*10**JD)/10**JD,UP=TW?(x=>rh(x)):(x=>Math.ceil(Math.round(x*1e6)/1e6));
   let N=0,cum=0,BX=0,BZp=0,BT=0,rows=[],CX=0,AK=0,offP=0,offNext=0,offUsed=0;
   for(let t=1;t<=ymax;t++){
-   const RU=M.isrUp===false?rh:cu,H=RU(D.DIE[k][t-1]*S),I=RU(D.CV[k][t-1]*S),pv=RND(D.PV[k][t-1]*S,10),w=D.PVFB[k][t]||0;
+   const RU=M.isrUp===false?rh:cu,H=RU(D.DIE[k][t-1]*S),I=RU(D.CV[k][t-1]*S),pv=RND(D.PV[k][t-1]*S,10),diff=dF(t),w=D.PVFB[k][t]||0;
    const CA=TW?rh(pv*diff):r10(pv*diff),CB=t>1?(TW?rh(rh(RND(N/1e4*w,3)*diff)):r10(RND(N/1e4*w,3)*diff)):0,Ka=TW?CA:cu(CA),Kb=TW?CB:cu(CB),K=Ka+Kb,late=t>P4;
    const at=age+t-1;let juvW=null,juvX=null;
    if(at<JA){ // juvenile: 回饋金 accumulate (daily interest, monthly) until age 15 year-end, then one-time PUA purchase
@@ -135,7 +135,7 @@ if(M.isr){Object.assign(MN,{PS:'儲存生息（前期增額繳清）',PC:'現金
  const ci=document.createElement('input');ci.id='dc';ci.type='number';ci.step='0.01';ci.value=(d*100).toFixed(2);ci.style.display='none';ci.title='自訂宣告利率(%)';$('sc').after(ci);
  $('sc').addEventListener('change',()=>{ci.style.display=$('sc').value=='c'?'':'none';});M.eff=null;}
 function setModes(){const g=+$('g').value,age=+$('age').value,term=+$('term').value,k=ENG.key(M,g,age,term);const ms=D.GP[k]?ENG.modes(M,D,k):['SAVE','CASH'];const cur=$('dm').value;
- $('dm').innerHTML=ms.map(m=>`<option value="${m}">${MN[m]}</option>`).join('');const pref=M.isr?'PS':{'繳清保險金額':'PUA','現金給付':'CASH','儲存生息':'SAVE'}[M.modeIllus];$('dm').value=ms.includes(cur)?cur:(ms.includes(pref)?pref:ms[0]);}
+ $('dm').innerHTML=ms.map(m=>`<option value="${m}">${MN[m]}</option>`).join('');const cs=M.isr?'PC':'CASH',pref=M.srv?(ms.includes(cs)?cs:'PUA'):'PUA';$('dm').value=ms.includes(cur)?cur:(ms.includes(pref)?pref:ms[0]);}
 function quote(g,age,term,S,sc,m1,m2){const pr=ENG.prem(M,D,g,age,term,S,m1,m2);if(!pr)return null;const q=ENG.quote(M,D,g,age,term,S,sc,$('dm').value,pr.p1,pr.p2);return Object.assign(q,{rate:pr.rate,p:pr.raw,p1:pr.p1,p2:pr.p2,d1:pr.d1,d2:pr.d2});}
 const fmt=n=>n==null?'':Math.round(n).toLocaleString('en-US'), pp=x=>(x==null||!isFinite(x)||x<0)?'':(x*100).toFixed(2)+'%';
 function run(){
