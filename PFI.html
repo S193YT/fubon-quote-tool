@@ -23,7 +23,7 @@ canvas{width:100%;height:260px;display:block}
 @media(max-width:600px){.grid{grid-template-columns:1fr 1fr}header h1{font-size:17px}.sum{grid-template-columns:1fr 1fr}canvas{height:220px}}
 </style></head><body>
 <header><a href="home.html">← 商品選單</a><h1>富邦人壽紅運滿滿外幣分紅終身保險（PFI，美元）快速報價</h1><small>費率／保價金／身故／紅利資料取自建議書 V2.4-1150630；僅供內部試算，以公司正式建議書為準</small></header><div id="trust" style="background:#eaf2fb;color:#0b5fa5;font-size:12px;text-align:center;padding:4px 8px">✔ 依富邦官方建議書逐年核對・宣告利率 115/10</div>
-<div class="wrap">
+<div class="wrap"><div class="card" style="background:#fff3cd;font-size:14px"><b>生存保險金：自第 1 保單年度末開始給付</b>（依建議書 SRV 表）。</div>
 <div class="card tog" id="togc"><div class="seg"><button id="bU" class="on">美元 USD</button><button id="bT">台幣 TWD</button></div><div class="fxw"><label>匯率 USD→TWD</label><input id="fx2" type="number" inputmode="decimal" value="31" step="0.01"></div><input type="hidden" id="cur" value="USD"></div>
 <div class="card grid">
 <div><label>性別</label><select id="g"><option value="1">男</option><option value="2">女</option></select></div>
@@ -154,7 +154,7 @@ function run(){
     const inc=prev==null?null:r.X-prev, incp=prev?inc/prev:null;
     const hl=r.t<=10||r.t%5==0||r.age%10==0; prev=r.X; xs.push(r.X*k);ws.push(r.W*k);cs.push(r.cum*k);
     if(ko&&!hl) continue;
-    h+=`<tr class="${(r.t%5==0||r.age%10==0)?'hl':''}"><td>${r.t} (${r.age})</td><td>${fmt(r.py*k)}</td><td>${fmt(r.cum*k)}</td><td class="cd">${fmt(r.W*k)}</td><td>${fmt(r.X*k)}</td><td>${fmt(r.K*k)}</td><td>${fmt((r.surv+r.cash)*k)}</td><td>${fmt(r.got*k)}</td><td>${(r.W/r.cum).toFixed(2)}</td><td>${fmt(inc==null?null:inc*k)}</td><td class="cg">${pp(incp)}</td><td>${pp((r.X+r.got-(r.cash||0))/r.cum-1)}</td><td>${pp(ENG.irr(q.rows,r.t))}</td></tr>`;
+    h+=`<tr class="${(r.t%5==0||r.age%10==0)?'hl':''}"><td>${r.t} (${r.age})</td><td>${fmt(r.py*k)}</td><td>${fmt(r.cum*k)}</td><td class="cd">${fmt(r.W*k)}</td><td>${fmt(r.X*k)}</td><td>${fmt(r.K*k)}</td><td>${fmt((r.surv+r.cash)*k)}${(r.surv&&r.cash)?`<br><small style="color:#888">含生存金 ${fmt(r.surv*k)}</small>`:''}</td><td>${fmt(r.got*k)}</td><td>${(r.W/r.cum).toFixed(2)}</td><td>${fmt(inc==null?null:inc*k)}</td><td class="cg">${pp(incp)}</td><td>${pp((r.X+r.got-(r.cash||0))/r.cum-1)}</td><td>${pp(ENG.irr(q.rows,r.t))}</td></tr>`;
   }
   $('tb').innerHTML=h;
   const R=q.rows, at=t=>R[t-1], gr=t=>t>1&&t<=R.length?R[t-1].X/R[t-2].X-1:null, pc=x=>pp(x)||'—';
