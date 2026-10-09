@@ -150,7 +150,15 @@ const SRV=!!M.srv;if(SRV){$('thR').style.display='';$('thS').style.display='';$(
 let BX={E:0,Y:0,C:0};
 function labels(){const dm=$('dm').value,hasB=!!(D.BONU&&Object.keys(D.BONU).length),isr=!!M.isr,
   E=hasB&&!isr&&!!(D.BONUCV&&Object.keys(D.BONUCV).length),Y=(hasB||isr)&&(dm=='PUA'||dm=='PS'||dm=='PC'),C=(hasB||isr)&&dm!='PUA',cl=(dm=='SAVE'||dm=='PS')?'儲存生息累積':'當年現金紅利';
-  if($('thS'))$('thS').innerHTML=(dm=='PUA'&&hasB)?'生存保險金<br><small>（含紅利增額，增額非保證）</small>':'生存保險金<br><small>（保證）</small>';
+  if($('thS'))$('thS').innerHTML=((dm=='PUA'&&hasB)||(isr&&Y))?'生存保險金<br><small>（含紅利增額，增額非保證）</small>':'生存保險金<br><small>（保證）</small>';
+  if(isr){const age=+$('age').value,JA=M.p4a??16,P4=dm=='PUA'?0:Math.max(JA-age,M.p4m??6),term=+$('term').value,lump=term==1&&M.payYears!='age';let nt='';
+    const opts=(M.isrModes||[]).map(x=>({PUA:'購買增額繳清',PS:'儲存生息',PC:'現金給付'})[x]).join('／');
+    if(dm=='PUA')nt='全期購買增額繳清保險金額。';
+    else if(P4>0)nt=`<b>第 1–${P4} 年不能選現金/儲存生息</b>（依本商品建議書：滿 ${JA} 歲前及前 ${M.p4m??6} 年，回饋金只能購買增額繳清）${age<JA?`；${JA}歲前回饋金${lump?'限儲存生息':'先抵繳保費、餘額儲存生息'}，至 ${JA-1} 歲保單年度末一次購買增額繳清`:''}。<b>第 ${P4+1} 年起</b>才依所選「${dm=='PC'?'現金給付':'儲存生息'}」給付。`;
+    else nt='本商品建議書無鎖定期間，第 1 年起即依所選方式給付。';
+    let el=$('dmnote');if(!el){el=document.createElement('div');el.id='dmnote';el.style.cssText='font-size:12px;color:#7a4b00;background:#fff8e1;border-radius:6px;padding:4px 8px;margin-top:4px;grid-column:1/-1';$('dm').closest('div').after(el);}
+    el.innerHTML='增值回饋分享金：'+nt+`<br><small>本商品可選：${opts}（依建議書下拉選單）</small>`;}
+  if(isr){const o=$('dm').querySelector('option[value=PC]'),o2=$('dm').querySelector('option[value=PS]');const age=+$('age').value,P4=Math.max((M.p4a??16)-age,M.p4m??6);if(o)o.text=P4>0?`現金給付（第1–${P4}年先購買增額繳清）`:'現金給付';if(o2)o2.text=P4>0?`儲存生息（第1–${P4}年先購買增額繳清）`:'儲存生息';}
   BX={E,Y,C};const L=['B'].concat(E?['E']:[],Y?['Y']:[],C?['C']:[]);
   $('thX').innerHTML=L.length>1?`解約總額<br><small>（${L.join('+')}）</small>`:'解約金<br><small>（B）</small>';
   $('bxr').style.display=L.length>1?'':'none';$('bxlg').style.display=L.length>1?'':'none';$('bxl').textContent=`展開解約總額明細（${L.join('／')}）`;
