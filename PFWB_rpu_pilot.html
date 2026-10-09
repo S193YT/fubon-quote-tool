@@ -317,9 +317,9 @@ function render(){ui();
   <div style="font-size:12px;color:#555;background:#f7f9fc;border-radius:8px;padding:6px 8px;margin-top:6px;line-height:1.7">計算：保單價值準備金 ${fm(V)} − 營業費用 min(1%×${fm(S*1e4)}, ${fm(V)}−${fm(CVn)}) = ${fm(V-E)}；÷ 躉繳純保費（${age+N} 歲，每萬繳清保額）${fm(ns)} × 10,000 ＝ ${fm(calc)} ${CN} → 建議書減額繳清保額表：${fm(d.PA[N-1])}/萬 × ${S} 萬 ＝ <b>${fm(P.Sp)}</b> ${CN}</div>`;
   {const G=[];let a=0;Rr.forEach(r=>{a+=r.surv+r.cash;G.push(a)});const bi=Rr.findIndex((r,i)=>r.X+G[i]>=r.cum);
    $('rpuBE').innerHTML=`<div style="background:#eaf7ee;border-left:5px solid #1e7e34;border-radius:8px;padding:6px 10px;margin-top:6px">減額繳清回本年度：<b>第 ${bi<0?'—':bi+1} 年（${bi<0?'':age+bi}歲）</b>起，解約金＋已領 ≥ 已繳保費 ${fm(pR.reduce((x,y)=>x+y,0)*k)} ${u}</div>`;}
-  const vs=$('rpuVs'),pv=vs.value,payN=pO.length,opts=[['F',`繳滿 ${payN} 年`]];[1,2].forEach(j=>{if(N+j<payN&&N+j<=n)opts.push([String(j),`多繳${j==1?'一':'兩'}期（第${N+j}年末減額繳清）`]);else if(N+j==payN)opts.push([String(j),`多繳${j==1?'一':'兩'}期（＝繳滿 ${payN} 年）`]);});
-  vs.innerHTML=opts.map(o=>`<option value="${o[0]}">${o[1]}</option>`).join('');vs.value=opts.some(o=>o[0]==pv)?pv:'F';
-  let Bs=O,lb=`繳滿${payN}年`;if(vs.value!='F'){const j=+vs.value;lb=`多繳${j==1?'一':'兩'}期`;if(N+j<payN)Bs=project(key,S,term,sc,q.p1,q.p2,N+j,ymax,age).rows;}
+  const vs=$('rpuVs'),pv=vs.value,payN=pO.length,opts=[];for(let m=N+1;m<=payN;m++){if(m<payN&&m>n)continue;opts.push([String(m),m==payN?`繳滿至第 ${m} 年（＝繳滿全期，不辦減額）`:`繳滿至第 ${m} 年（多繳 ${m-N} 期，第${m}年末減額繳清）`]);}
+  vs.innerHTML=opts.map(o=>`<option value="${o[0]}">${o[1]}</option>`).join('');vs.value=opts.some(o=>o[0]==pv)?pv:String(payN);
+  const Mv=+vs.value,lb=`繳滿至第${Mv}年`,Bs=Mv>=payN?O:project(key,S,term,sc,q.p1,q.p2,Mv,ymax,age).rows;
   $('rpuCmp').innerHTML=rpuCmp2(Bs,Rr,N,age,k,ENG.irr,$('rpuKey').checked,lb);
   const th=document.querySelector('#tbl thead').cloneNode(true);th.querySelectorAll('[id]').forEach(e=>e.removeAttribute('id'));th.querySelector('tr').insertAdjacentHTML('beforeend','<th>繳清保額<br><small>(減額＋增額)</small></th>');
   $('rpuTh').innerHTML=th.innerHTML;$('rpuTbl').className=$('tbl').className;
