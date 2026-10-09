@@ -241,7 +241,7 @@ function project(key,S,term,sc,p1,p2,N,ymax,age){
     const ex=(t==ymax&&M.finalExtra)?K:0, Q=R(NP/1e4*D._DIE2[key][t-1])+ex, R0=R(NP/1e4*D.PVFB0[key][t])+ex;
     const AD=BD?R(f*u*BD[t-1]):0, AE=BC?R(f*u*BC[t-1]):0, Fs=SV?R(SV[t-1]*u):0, Os=SV?R(SV[t-1]*NP/1e4):0;
     const py=(!cv&&t<=payN)?(t==1?p1:p2):0; cum+=py;
-    rows.push({t,age:age+t-1,py,cum,W:H+Q+AD,X:I+R0+AE,surv:Fs+Os,cash:0,K,base:cv?Sp:S*1e4,pua:NP});
+    rows.push({t,age:age+t-1,py,cum,W:H+Q+AD,X:I+R0+AE,surv:Fs+Os,cash:0,K,base:cv?Sp:S*1e4,pua:NP,cz:cv&&((D.CV[key][t-1]||0)<(D.PVFB0[key][t]||0)-0.5)});
   } return {rows,Sp};}
 window.RPU_project=project;
 function ui(){
@@ -253,9 +253,9 @@ function ui(){
   <div class="row" style="margin-top:8px"><input type="checkbox" id="rpuKey" checked><label for="rpuKey" style="margin:0">只顯示重點年度</label></div>
   <div class="tw"><table><thead><tr><th>年度<br>(年齡)</th><th>年度保費</th><th>累計保費</th><th>繳清保額<br>(減額＋增額)</th><th>當年紅利</th>${D.SRV?'<th>生存金</th>':''}<th class="cd">身故/完全<br>失能總額</th><th>解約總額</th><th>IRR</th></tr></thead><tbody id="rpuTb"></tbody></table></div>
   <div class="note" style="font-size:12px;color:#666;margin-top:8px;line-height:1.7">
-  ‧依條款「減額繳清保險」約定：繳費期間內、保單有保單價值準備金時，得以「保單價值準備金 − 營業費用」作為躉繳保費改保「減額繳清保險」，之後不必再繳費。營業費用＝min(原保額×1%，保單價值準備金−解約金)。已繳清（繳費期滿）後不適用。<br>
+  ‧依本商品條款「減額繳清保險」約定（以 PFA 條款第二十六條為例）：繳足保險費累積達有保單價值準備金時，得以當時保險金額對應之保單價值準備金扣除營業費用後的數額作為躉繳保險費，改保「減額繳清保險」，不必再繼續繳費。營業費用以原保險金額之1%或原保險金額對應之保單價值準備金與其解約金之差額，兩者較小者為限。各商品條款條次與細節請以該商品條款為準。<br>
   ‧減額繳清保額取自建議書 PDATA「減額繳清保額表」，並與建議書「年度末減額繳清保險金額」欄核對一致。<br>
-  ‧辦理後：減額繳清保額比照建議書「增額繳清保險」之每萬元身故、保價、紅利${D.SRV?'及生存金':''}因子推估；原已累積之增額繳清保險金額保留並續領紅利；終期紅利${D.SRV?'、生存金':''}按減額後保額比例估算。此部分建議書未提供，屬<b>概算</b>，實際以富邦人壽核算為準。保單借款、欠繳或墊繳保費須另行扣除。本試算假設於保單週年日辦理。</div>`;
+  ‧<b>「濃縮」</b>：辦理後、原繳費期間內，原契約解約金仍低於保單價值準備金（尚有解約費用）的年度，條款只約定「解約金＝保險金額對應之解約金＋累計增加保險金額對應之保單價值準備金」（第2條第8款），並未另附減額繳清後的解約金及身故給付表；比照好解說，這些年度不顯示身故、解約及 IRR，以「濃縮」表示，實際以富邦人壽核算為準。從原契約解約金等於保單價值準備金的年度起，兩種解讀結果相同，才顯示數字。<br>  ‧辦理後：減額繳清保額比照建議書「增額繳清保險」之每萬元身故、保價、紅利${D.SRV?'及生存金':''}因子推估；原已累積之增額繳清保險金額保留並續領紅利；終期紅利${D.SRV?'、生存金':''}按減額後保額比例估算。此部分建議書未提供，屬<b>概算</b>，實際以富邦人壽核算為準。保單借款、欠繳或墊繳保費須另行扣除。本試算假設於保單週年日辦理。</div>`;
   note.parentNode.insertBefore(c,note);
   $('rpuN').addEventListener('change',render);$('rpuKey').addEventListener('change',render);}
 function render(){ui();
@@ -277,11 +277,11 @@ function render(){ui();
   const ck=[10,20,30].map(t=>({t,l:`第${t}年`})),a80=80-age+1;if(a80>0&&a80<=ymax)ck.push({t:a80,l:'80歲',a:1});
   const cks=ck.filter(x=>x.t<=ymax).sort((a,b)=>a.t-b.t);
   const got=(R,t)=>R.slice(0,t).reduce((a,r)=>a+r.surv+r.cash,0);
-  const cell=(R,t)=>{const r=R[t-1];return `<td>${fm(r.cum*k)}</td><td class="cd">${fm(r.W*k)}</td><td>${fm(r.X*k)}${D.SRV?`<br><small>累計領回 ${fm(got(R,t)*k)}</small>`:''}</td><td>${pq(ENG.irr(R,t))}</td>`;};
+  const cell=(R,t)=>{const r=R[t-1];if(r.cz)return `<td>${fm(r.cum*k)}</td><td class="cd">濃縮</td><td>濃縮</td><td></td>`;return `<td>${fm(r.cum*k)}</td><td class="cd">${fm(r.W*k)}</td><td>${fm(r.X*k)}${D.SRV?`<br><small>累計領回 ${fm(got(R,t)*k)}</small>`:''}</td><td>${pq(ENG.irr(R,t))}</td>`;};
   $('rpuCmp').innerHTML=`<div class="tw" style="max-height:none;margin-top:8px"><table class="rc"><thead><tr><th>時點</th><th>方案</th><th>累計保費</th><th class="cd">身故總額</th><th>解約總額</th><th>IRR${D.SRV?'<br><small>含領回</small>':''}</th></tr></thead><tbody>${cks.map(x=>`<tr><td rowspan="2">${x.l}<br><small>${x.a?'第'+x.t+'年':O[x.t-1].age+'歲'}</small></td><td>繼續繳</td>${cell(O,x.t)}</tr><tr style="background:#fff8ef"><td>減額<br>繳清</td>${cell(Rr,x.t)}</tr>`).join('')}</tbody></table></div>`;
   const ko=$('rpuKey').checked;let h='';
   for(const r of Rr){if(r.t<N)continue;const hl=r.t<=N+10||r.t%5==0||r.age%10==0;if(ko&&!hl)continue;
-    h+=`<tr class="${r.t==N?'hl':''}"><td>${r.t} (${r.age})${r.t==N?'<br><small>辦理</small>':''}</td><td>${fm(r.py*k)}</td><td>${fm(r.cum*k)}</td><td>${fm((r.base+r.pua)*k)}</td><td>${fm(r.K*k)}</td>${D.SRV?`<td>${fm(r.surv*k)}</td>`:''}<td class="cd">${fm(r.W*k)}</td><td>${fm(r.X*k)}</td><td>${pq(ENG.irr(Rr,r.t))}</td></tr>`;}
+    h+=`<tr class="${r.t==N?'hl':''}"><td>${r.t} (${r.age})${r.t==N?'<br><small>辦理</small>':''}</td><td>${fm(r.py*k)}</td><td>${fm(r.cum*k)}</td><td>${fm((r.base+r.pua)*k)}</td><td>${fm(r.K*k)}</td>${D.SRV?`<td>${fm(r.surv*k)}</td>`:''}${r.cz?'<td class="cd">濃縮</td><td>濃縮</td><td></td>':`<td class="cd">${fm(r.W*k)}</td><td>${fm(r.X*k)}</td><td>${pq(ENG.irr(Rr,r.t))}</td>`}</tr>`;}
   $('rpuTb').innerHTML=h;}
 window.RPU_render=render;
 const hook=()=>setTimeout(render,0);
