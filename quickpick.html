@@ -39,7 +39,7 @@ const wan=v=>{v=Math.round(v);return v>=1e4?(v/1e4).toFixed(v>=1e6?0:(v>=1e5?1:2
 /* sum assured (萬) from budget b (product currency): annual mode uses first-year premium r0, total mode uses total premium r1 (both at S0) */
 const bS=(S0,b,r0,r1)=>Math.floor(S0*b/(BM.m=='t'&&r1?r1:r0)*10)/10;
 /* premium line: annual & total in TWD, with original currency when foreign */
-const prLine=(ann,tot,cur,rt)=>{const f=v=>cur=='TWD'?wan(v):'NT$'+wan(v*rt);const o=cur=='TWD'?'':`（${cur} ${Math.round(ann).toLocaleString('en-US')}／${Math.round(tot).toLocaleString('en-US')}）`;return `<div class="prl">年繳約 <b>${f(ann)}</b>｜總繳 <b>${f(tot)}</b>${o}</div>`;};
+const prLine=(ann,tot,cur,rt,op)=>{if(op&&cur!='TWD'){const n=v=>Math.round(v).toLocaleString('en-US');return `<div class="prl">年繳約 <b>${cur} ${n(ann)}</b>｜總繳 <b>${cur} ${n(tot)}</b>（約 NT$${wan(ann*rt)}／NT$${wan(tot*rt)}）</div>`;}const f=v=>cur=='TWD'?wan(v):'NT$'+wan(v*rt);const o=cur=='TWD'?'':`（${cur} ${Math.round(ann).toLocaleString('en-US')}／${Math.round(tot).toLocaleString('en-US')}）`;return `<div class="prl">年繳約 <b>${f(ann)}</b>｜總繳 <b>${f(tot)}</b>${o}</div>`;};
 function bmLinks(){const q=`bm=${BM.m}&bud=${encodeURIComponent($('bud').value)}&g=${$('g').value}&age=${$('age').value}`;document.querySelectorAll('a[data-tool]').forEach(a=>a.href=a.dataset.tool+'?'+q);}
 function bmSave(){try{localStorage.setItem('qt_bm',BM.m);localStorage.setItem('qt_bud',$('bud').value);}catch(e){}
  const u=new URLSearchParams(location.search);u.set('bm',BM.m);u.set('bud',$('bud').value);u.set('g',$('g').value);u.set('age',$('age').value);history.replaceState(null,'','?'+u.toString()+location.hash);bmLinks();}
@@ -71,7 +71,7 @@ function run(){const L=list(),g=$('g').value,age=$('age').value;
  let R=L.filter(x=>!x.ex&&!x.nod&&!x.low);
  const f={irr:x=>x.i20!=null?x.i20:x.i10,be:x=>-(x.be||99)+V(x.i10)/10,pay:x=>V(x.i20!=null?x.i20:x.i10),death:x=>V(x.dm),short:x=>-(x.c.payYears=='age'?99:x.t)+V(x.i10)};
  if(NEED=='pay')R=R.filter(x=>x.c.payout!='累積型');
- R.sort((a,b)=>V(f[NEED](b))-V(f[NEED](a))||hr(a.c)-hr(b.c));const seen=new Set(),top=[];for(const x of R){if(seen.has(x.c.code))continue;seen.add(x.c.code);top.push(x);if(top.length==5)break;}
+ R.sort((a,b)=>V(f[NEED](b))-V(f[NEED](a))||(NEED=='pay'?(a.c.cur!='USD')-(b.c.cur!='USD'):0)||hr(a.c)-hr(b.c));const seen=new Set(),top=[];for(const x of R){if(seen.has(x.c.code))continue;seen.add(x.c.code);top.push(x);if(top.length==5)break;}
  const lk=x=>x.c.page+(x.r?`?g=${g}&age=${age}&term=${x.t}&amt=${x.S.toFixed(1)}`:'');
  $('top').innerHTML=top.map((x,i)=>`<a class="pick" href="${lk(x)}"><div class="rk">${i+1}</div><div><b>${x.c.code} ${x.c.name.replace('富邦人壽','')}</b>${HOT.includes(x.c.code)?' <span class="tag hot">熱銷</span>':''}<br><small><span class="tag ${x.c.cur}">${x.c.cur}</span>${TN(x.c,x.t)}｜${x.c.dividend}${x.c.payout!='累積型'?'｜'+PL(x.c,x.t):''}｜保額約 ${x.S.toFixed(1)}萬</small>${prLine(x.ann,x.totp,x.c.cur,x.rt)}<div class="why">${reason(x)}</div></div></a>`).join('')||'<div class="card">無符合商品</div>';
  const ky={t:x=>x.t==null?999:(x.c.payYears=='age'?99:x.t),code:x=>x.c.code,name:x=>x.c.name,cur:x=>x.c.cur,type:x=>x.c.type,ar:x=>x.ar};

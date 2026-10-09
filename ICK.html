@@ -177,7 +177,7 @@ function payout(R,tot,fx,u,k){
   const hasCash=R.some(r=>r.cash>0),gotAt=a=>{const r=R.filter(x=>x.age<=a).pop();return r?r.got:null};
   const ex=R.find(r=>r.got>=tot);
   $('payh').textContent=`${lab2}每年領約 ${(rate*100).toFixed(2)}%（佔總保費）`+(i20!=null&&i20>0?`，第20年含領回 IRR ${(i20*100).toFixed(2)}%`:'');
-  $('payb').innerHTML=`<small>${lab2}</small><br>每年領 約 ${ntd(twd)}`+(CUR!='TWD'?`<small>（${CUR} ${fmt(rf.surv)}）</small>`:'')+(R.length>rf.t&&R[rf.t].surv!=rf.surv?`<br><small>第${rf.t}年金額；之後每年依建議書生存金表變動</small>`:'');
+  $('payb').innerHTML=`<small>${lab2}</small><br>每年領 約 `+(CUR!='TWD'?`${CUR} ${fmt(rf.surv)}<small>（約 ${ntd(twd)}）</small>`:ntd(twd))+(R.length>rf.t&&R[rf.t].surv!=rf.surv?`<br><small>第${rf.t}年金額；之後每年依建議書生存金表變動</small>`:'');
   const c80=gotAt(80),c90=gotAt(90);
   $('paym').innerHTML=`<div>每年領回率<b>${(rate*100).toFixed(2)}%</b>佔總保費 ${fmt(tot*k)} ${u}</div>`+(c80!=null?`<div>領到 80 歲累計${hasCash?'（含現金紅利）':''}<b>${fmt(c80*k)}</b>${u}（${(c80/tot*100).toFixed(0)}% 總保費）</div>`:'')+(c90!=null?`<div>領到 90 歲累計<b>${fmt(c90*k)}</b>${u}（${(c90/tot*100).toFixed(0)}%）</div>`:'')+`<div>領回超過保費<b>${ex?`第${ex.t}年（${ex.age}歲）`:'—'}</b>${ex?'累計領回 ≥ 總保費':'保障期內未超過'}</div>`+(i20!=null?`<div>第20年含領回IRR<b>${pp(i20)||'—'}</b>領回＋解約總額</div>`:'');
   bars(R,k,u);
