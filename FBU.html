@@ -87,7 +87,7 @@ const ENG={
   }return {k,mode,rows};},
  // interest-sensitive: sc = declared rate (decimal)
  // interest-sensitive (verified vs 計算 sheet logic): sc = declared rate; mode PUA(全期增額) / PS(前P4年增額,後儲存生息) / PC(前P4年增額,後現金給付)
- quoteIsr(M,D,g,age,term,S,decl,mode,p1,p2,eff){
+ quoteIsr(M,D,g,age,term,S0,decl,mode,p1,p2,eff,rp){let S=S0;
   const cu=x=>Math.ceil(Math.round(x*1e9)/1e9),rh=ENG.rh,r10=x=>Math.ceil(Math.round(x*1e13)/1e3)/1e10,R10=x=>Math.round(x*1e10)/1e10,k=ENG.key(M,g,age,term),as=M.assumed;
   const DL=t=>typeof decl=='function'?decl(t):decl,dF=t=>Math.max(0,RND(RND(Math.max(DL(t),as),4)-as,5)),ymax=M.maxAge-age+1,SV=D.SRV&&D.SRV[k],payN=M.payYears=='term'?term:term-age;
   const JA=M.p4a??16,P4=mode=='PUA'?ymax:Math.max(JA-age,M.p4m??6);
@@ -100,6 +100,7 @@ const ENG={
   const TW=!!M.kRound,AD=M.accDig||10,RA=x=>Math.round(x*10**AD)/10**AD,JD=M.juvDig||10,RJ=x=>Math.round(x*10**JD)/10**JD,UP=TW?(x=>rh(x)):(x=>Math.ceil(Math.round(x*1e6)/1e6));
   let N=0,cum=0,BX=0,BZp=0,BT=0,rows=[],CX=0,AK=0,offP=0,offNext=0,offUsed=0;
   for(let t=1;t<=ymax;t++){
+   const cvt=!!(rp&&t>rp.n);if(cvt){S=0;if(t==rp.n+1)N+=rp.Sp;}
    const RU=M.isrUp===false?rh:cu,H=RU(D.DIE[k][t-1]*S),I=RU(D.CV[k][t-1]*S),pv=RND(D.PV[k][t-1]*S,10),diff=dF(t),w=D.PVFB[k][t]||0;
    const CA=TW?rh(pv*diff):r10(pv*diff),CB=t>1?(TW?rh(rh(RND(N/1e4*w,3)*diff)):r10(RND(N/1e4*w,3)*diff)):0,Ka=TW?CA:cu(CA),Kb=TW?CB:cu(CB),K=Ka+Kb,late=t>P4;
    const at=age+t-1;let juvW=null,juvX=null;
@@ -121,8 +122,8 @@ const ENG={
    if(juvW!=null)Q=juvW;if(juvX!=null)R0=juvX;
    const Fs=SV?cu(SV[t-1]*S):0,Os=SV?cu(SV[t-1]*N/1e4):0;
    const cash=(late&&mode=='PC')?K:0,acc=(late&&mode=='PS')?BT:0;
-   const py=t<=payN?(t==1?p1:p2)-(t>1&&at-1<16?offUsed:0):0;cum+=py;offUsed=offNext;offNext=0;
-   rows.push({t,age:age+t-1,py,cum,W:H+Q+acc+cash,X:I+R0+acc+cash,surv:Fs+Os,K,cash,b:I,e:0,y:R0,c:acc+cash});
+   const py=(t<=payN&&!cvt)?(t==1?p1:p2)-(t>1&&at-1<16?offUsed:0):0;cum+=py;offUsed=offNext;offNext=0;
+   rows.push({t,age:age+t-1,py,cum,W:H+Q+acc+cash,X:I+R0+acc+cash,surv:Fs+Os,K,cash,b:I,e:0,y:R0,c:acc+cash,base:cvt?rp.Sp:S0*1e4,pua:cvt?N-rp.Sp:N});
   }return {k,mode,rows};},
  // IRR on flows: premium at start of year, survival/cash payouts at end of year, X at end of year t
  irr(rows,t){const fl=[];for(let i=0;i<t;i++){const r=rows[i];fl.push([i,-r.py]);let o=r.surv+(i<t-1?r.cash:0);if(o)fl.push([i+1,o]);}
