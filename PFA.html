@@ -11,7 +11,7 @@ input,select{width:100%;height:46px;padding:6px 10px;font-size:17px;border:1px s
 .tw{overflow:auto;-webkit-overflow-scrolling:touch;max-height:70vh}
 table{border-collapse:separate;border-spacing:0;font-size:13px;min-width:100%}th,td{border-bottom:1px solid #e3e3e3;border-right:1px solid #eee;padding:6px 7px;text-align:right;white-space:nowrap}
 th{background:#e8f0f8;position:sticky;top:0;z-index:2}th:first-child,td:first-child{position:sticky;left:0;background:#f7f9fc;z-index:1;font-weight:bold}th:first-child{z-index:3;background:#d8e6f4}
-tr.hl td{background:#fff7d6}tr.hl td:first-child{background:#ffeeb0}
+body.rpuopen tr.hl td{background:#fff7d6}body.rpuopen tr.hl td:first-child{background:#ffeeb0}
 .err{color:#c00;font-weight:bold}.note{font-size:12px;color:#666;line-height:1.7}
 .row{display:flex;align-items:center;gap:8px;font-size:14px;margin-bottom:8px}.row input{width:22px;height:22px}
 .tog{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;border:2px solid #0b5fa5}.seg{display:flex;flex:1 1 240px;border-radius:12px;overflow:hidden;border:2px solid #0b5fa5}
@@ -185,7 +185,7 @@ function ui(){
   $('rpuN').addEventListener('change',render);$('rpuVs').addEventListener('change',render);$('rpuKey').addEventListener('change',render);}
 function render(){ui();
   const g=+$('g').value,age=+$('age').value,term=+$('term').value,sc=+$('sc').value,fx=+$('fx').value,cur=$('cur').value,m1=$('m1').value,m2=$('m2').value;
-  {const _ag=C.ages[term],_ok=!!(_ag&&Number.isInteger(age)&&age>=_ag[0]&&age<=_ag[1]&&(()=>{const _d=RPU.keys[keyOf(g,age,term)];return _d&&_d.PA.some(x=>x>0)})());$('rpu').style.display=_ok?'':'none';document.body.classList.toggle('norpu',!_ok);if(!_ok){document.querySelectorAll('#tbl tbody tr.hl').forEach(r=>r.classList.remove('hl'));return;}}
+  {const _ag=C.ages[term],_ok=!!(_ag&&Number.isInteger(age)&&age>=_ag[0]&&age<=_ag[1]&&(()=>{const _d=RPU.keys[keyOf(g,age,term)];return _d&&_d.PA.some(x=>x>0)})());$('rpu').style.display=_ok?'':'none';document.body.classList.toggle('norpu',!_ok);document.body.classList.toggle('rpuopen',_ok&&$('rpuIn').style.display!='none');if(!_ok){document.querySelectorAll('#tbl tbody tr.hl').forEach(r=>r.classList.remove('hl'));return;}}
   if($('rpuIn').style.display=='none')return;const k=cur=='TWD'?fx:1,u=cur=='TWD'?'台幣':'美元',msg=$('rpuMsg');msg.textContent='';['rpuSum','rpuCmp','rpuTb','rpuBE'].forEach(i=>$(i).innerHTML='');$('rpuBody').style.display='none';
   const ag=C.ages[term];if(!ag||!(Number.isInteger(age)&&age>=ag[0]&&age<=ag[1]))return;
   const key=keyOf(g,age,term);let S=+$('amt').value;if($('mode').value=='P')S=Math.floor(+$('amt').value/D.GP[key]*10)/10;
