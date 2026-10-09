@@ -56,7 +56,9 @@ const IIF=(c,a,b)=>c?a:(b===undefined?false:b),AND=(...a)=>a.every(Boolean),OR=(
 const ENG={
  rh:x=>Math.floor(x+0.5), cu:x=>Math.ceil(Math.round(x*1e6)/1e6),
  key(M,g,age,term){const a=M.code+String(term).padStart(2,'0')+String(g).padStart(2,'0')+String(age).padStart(2,'0'),b=M.code+String(g).padStart(2,'0')+String(age).padStart(2,'0');if(term!=1)return a;const D=ENG._D;if(D&&D.DIE){if(D.DIE[a])return a;if(D.DIE[b])return b;}return M.termOmit1?b:a;},
- modes(M,D,k){if(M.isr)return M.isrModes||['PS','PC','PUA'];const m=[];if(D.PVFB[k]&&D.PVFB0[k]&&D._DIE2[k])m.push('PUA');m.push('SAVE','CASH');return m;},
+ // 依建議書「年度保單紅利給付方式」不可選（輸入頁 E19 無下拉、固定「繳清保險金額」）＝條款限購買增額繳清：起領前不會有現金紅利，紅利增加保額→起領後生存金變多
+ PUAONLY:['PAJ','PAK','PALA','PALB','PALC','PAN','PF55','PF60','PF65','PFNA','PFNB','PFNC','PFO','PFVA','PFVB','PFVC','PFVD','PFWA','PFWB','PFWC','PFWD','PFWE','PFWF','PFZA','PFZB'],
+ modes(M,D,k){if(M.isr)return M.isrModes||['PS','PC','PUA'];if(ENG.PUAONLY.includes(M.code)&&D.PVFB[k]&&D.PVFB0[k]&&D._DIE2[k])return ['PUA'];const m=[];if(D.PVFB[k]&&D.PVFB0[k]&&D._DIE2[k])m.push('PUA');m.push('SAVE','CASH');return m;},
  prem(M,D,g,age,term,S,m1,m2){ENG._D=D;const k=ENG.key(M,g,age,term),rate=D.GP[k];if(!rate||!D.DIE[k])return null;
    const raw=M.premRoundDown?Math.floor(Math.round(S*rate*1e6)/1e6):ENG.rh(S*rate);
    const ev=e=>{try{return +eval(e)||0}catch(_){return 0}};
@@ -141,13 +143,14 @@ if(M.isr){Object.assign(MN,{PS:'儲存生息（前期增額繳清）',PC:'現金
  const ci=document.createElement('input');ci.id='dc';ci.type='number';ci.step='0.01';ci.value=(d*100).toFixed(2);ci.style.display='none';ci.title='自訂宣告利率(%)';$('sc').after(ci);
  $('sc').addEventListener('change',()=>{ci.style.display=$('sc').value=='c'?'':'none';});M.eff=null;}
 function setModes(){const g=+$('g').value,age=+$('age').value,term=+$('term').value,k=ENG.key(M,g,age,term);const ms=D.GP[k]?ENG.modes(M,D,k):['SAVE','CASH'];const cur=$('dm').value;
- $('dm').innerHTML=ms.map(m=>`<option value="${m}">${MN[m]}</option>`).join('');const cs=M.isr?'PC':'CASH',pref=M.srv?(ms.includes(cs)?cs:'PUA'):'PUA';$('dm').value=ms.includes(cur)?cur:(ms.includes(pref)?pref:ms[0]);}
+ $('dm').innerHTML=ms.map(m=>`<option value="${m}">${MN[m]}</option>`).join('');const cs=M.isr?'PC':'CASH',pref=M.srv?(ms.includes(cs)?cs:'PUA'):'PUA';$('dm').value=ms.includes(cur)?cur:(ms.includes(pref)?pref:ms[0]);$('dm').disabled=ms.length==1;$('dm').title=ms.length==1?'本商品條款限定：年度保單紅利只能購買增額繳清保險金額（起領前不發現金紅利）':'';}
 function quote(g,age,term,S,sc,m1,m2){const pr=ENG.prem(M,D,g,age,term,S,m1,m2);if(!pr)return null;const q=ENG.quote(M,D,g,age,term,S,sc,$('dm').value,pr.p1,pr.p2);return Object.assign(q,{rate:pr.rate,p:pr.raw,p1:pr.p1,p2:pr.p2,d1:pr.d1,d2:pr.d2});}
 const SRV=!!M.srv;if(SRV){$('thR').style.display='';$('thS').style.display='';$('thI').innerHTML='含領回<br>IRR';$('payc').style.display='block';}
 
 let BX={E:0,Y:0,C:0};
 function labels(){const dm=$('dm').value,hasB=!!(D.BONU&&Object.keys(D.BONU).length),isr=!!M.isr,
   E=hasB&&!isr&&!!(D.BONUCV&&Object.keys(D.BONUCV).length),Y=(hasB||isr)&&(dm=='PUA'||dm=='PS'||dm=='PC'),C=(hasB||isr)&&dm!='PUA',cl=(dm=='SAVE'||dm=='PS')?'儲存生息累積':'當年現金紅利';
+  if($('thS'))$('thS').innerHTML=(dm=='PUA'&&hasB)?'生存保險金<br><small>（含紅利增額，增額非保證）</small>':'生存保險金<br><small>（保證）</small>';
   BX={E,Y,C};const L=['B'].concat(E?['E']:[],Y?['Y']:[],C?['C']:[]);
   $('thX').innerHTML=L.length>1?`解約總額<br><small>（${L.join('+')}）</small>`:'解約金<br><small>（B）</small>';
   $('bxr').style.display=L.length>1?'':'none';$('bxlg').style.display=L.length>1?'':'none';$('bxl').textContent=`展開解約總額明細（${L.join('／')}）`;

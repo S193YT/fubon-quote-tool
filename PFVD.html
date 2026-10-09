@@ -28,7 +28,7 @@ canvas{width:100%;height:260px;display:block}
 /*LBL*/.bx{display:none}table.sbx .bx{display:table-cell}table.sbx .bx.na{display:none}th.bx,td.bx{background:#f3f0fa;color:#4a3b78}.fxn{font-size:11px;color:#666;display:block;margin-top:3px}.chip{font-size:13px;background:#eef6ee;border-left:4px solid #1e8449;padding:8px 10px;line-height:1.6;margin-bottom:8px}.lg{font-size:12px;color:#4a3b78;margin:0 0 6px}
 </style></head><body>
 <header><a href="home.html">← 商品選單</a><h1>富邦人壽美年加鑫外幣分紅終身保險（PFVD，美元）快速報價</h1><small>費率／保價金／身故／紅利資料取自建議書 V1.2-1150630；僅供內部試算，以公司正式建議書為準</small></header><div id="trust" style="background:#eaf2fb;color:#0b5fa5;font-size:12px;text-align:center;padding:4px 8px">✔ 依富邦官方建議書 V1.2-1150630 逐年核對・紅利假設：最可能 5.50%／較低 3.00%（非保證）</div>
-<div class="wrap"><div class="card" style="background:#fff3cd;font-size:14px"><b>生存保險金開始給付：保險年齡 34 歲（35 歲前一年）的保單年度末起每年給付</b>（依建議書 SRV 表）。「生存保險金」欄只列保證生存保險金，起領前顯示「—」；選現金給付時，每年的年度紅利另列在「現金紅利領回」欄（非保證），不是生存金。</div>
+<div class="wrap"><div class="card" style="background:#fff3cd;font-size:14px"><b>生存保險金開始給付：保險年齡 34 歲（35 歲前一年）的保單年度末起每年給付</b>（依建議書 SRV 表）。<br><b style="color:#c0392b">本商品年度保單紅利限定「購買增額繳清保險金額」（條款／建議書不可選現金或儲存生息）：起領前不會領到任何紅利；紅利增加的保額，會讓起領後的生存保險金一起變多（「生存保險金」欄已含增額部分，非保證）。</b></div>
 <div class="card pay" id="payc"><div class="hl1" id="payh"></div><div class="big" id="payb"></div><div class="pm" id="paym"></div><canvas id="pch"></canvas></div>
 <div class="card tog" id="togc"><div class="seg"><button id="bU" class="on">美元 USD</button><button id="bT">台幣 TWD</button></div><div class="fxw"><label>匯率 USD→TWD</label><input id="fx2" type="number" inputmode="decimal" value="31" step="0.01"><small class="fxn">台幣僅依自訂匯率換算（建議書為外幣）</small></div><input type="hidden" id="cur" value="USD"></div>
 <div class="card grid">
@@ -56,7 +56,9 @@ const IIF=(c,a,b)=>c?a:(b===undefined?false:b),AND=(...a)=>a.every(Boolean),OR=(
 const ENG={
  rh:x=>Math.floor(x+0.5), cu:x=>Math.ceil(Math.round(x*1e6)/1e6),
  key(M,g,age,term){const a=M.code+String(term).padStart(2,'0')+String(g).padStart(2,'0')+String(age).padStart(2,'0'),b=M.code+String(g).padStart(2,'0')+String(age).padStart(2,'0');if(term!=1)return a;const D=ENG._D;if(D&&D.DIE){if(D.DIE[a])return a;if(D.DIE[b])return b;}return M.termOmit1?b:a;},
- modes(M,D,k){if(M.isr)return M.isrModes||['PS','PC','PUA'];const m=[];if(D.PVFB[k]&&D.PVFB0[k]&&D._DIE2[k])m.push('PUA');m.push('SAVE','CASH');return m;},
+ // 依建議書「年度保單紅利給付方式」不可選（輸入頁 E19 無下拉、固定「繳清保險金額」）＝條款限購買增額繳清：起領前不會有現金紅利，紅利增加保額→起領後生存金變多
+ PUAONLY:['PAJ','PAK','PALA','PALB','PALC','PAN','PF55','PF60','PF65','PFNA','PFNB','PFNC','PFO','PFVA','PFVB','PFVC','PFVD','PFWA','PFWB','PFWC','PFWD','PFWE','PFWF','PFZA','PFZB'],
+ modes(M,D,k){if(M.isr)return M.isrModes||['PS','PC','PUA'];if(ENG.PUAONLY.includes(M.code)&&D.PVFB[k]&&D.PVFB0[k]&&D._DIE2[k])return ['PUA'];const m=[];if(D.PVFB[k]&&D.PVFB0[k]&&D._DIE2[k])m.push('PUA');m.push('SAVE','CASH');return m;},
  prem(M,D,g,age,term,S,m1,m2){ENG._D=D;const k=ENG.key(M,g,age,term),rate=D.GP[k];if(!rate||!D.DIE[k])return null;
    const raw=M.premRoundDown?Math.floor(Math.round(S*rate*1e6)/1e6):ENG.rh(S*rate);
    const ev=e=>{try{return +eval(e)||0}catch(_){return 0}};
@@ -141,13 +143,14 @@ if(M.isr){Object.assign(MN,{PS:'儲存生息（前期增額繳清）',PC:'現金
  const ci=document.createElement('input');ci.id='dc';ci.type='number';ci.step='0.01';ci.value=(d*100).toFixed(2);ci.style.display='none';ci.title='自訂宣告利率(%)';$('sc').after(ci);
  $('sc').addEventListener('change',()=>{ci.style.display=$('sc').value=='c'?'':'none';});M.eff=null;}
 function setModes(){const g=+$('g').value,age=+$('age').value,term=+$('term').value,k=ENG.key(M,g,age,term);const ms=D.GP[k]?ENG.modes(M,D,k):['SAVE','CASH'];const cur=$('dm').value;
- $('dm').innerHTML=ms.map(m=>`<option value="${m}">${MN[m]}</option>`).join('');const cs=M.isr?'PC':'CASH',pref=M.srv?(ms.includes(cs)?cs:'PUA'):'PUA';$('dm').value=ms.includes(cur)?cur:(ms.includes(pref)?pref:ms[0]);}
+ $('dm').innerHTML=ms.map(m=>`<option value="${m}">${MN[m]}</option>`).join('');const cs=M.isr?'PC':'CASH',pref=M.srv?(ms.includes(cs)?cs:'PUA'):'PUA';$('dm').value=ms.includes(cur)?cur:(ms.includes(pref)?pref:ms[0]);$('dm').disabled=ms.length==1;$('dm').title=ms.length==1?'本商品條款限定：年度保單紅利只能購買增額繳清保險金額（起領前不發現金紅利）':'';}
 function quote(g,age,term,S,sc,m1,m2){const pr=ENG.prem(M,D,g,age,term,S,m1,m2);if(!pr)return null;const q=ENG.quote(M,D,g,age,term,S,sc,$('dm').value,pr.p1,pr.p2);return Object.assign(q,{rate:pr.rate,p:pr.raw,p1:pr.p1,p2:pr.p2,d1:pr.d1,d2:pr.d2});}
 const SRV=!!M.srv;if(SRV){$('thR').style.display='';$('thS').style.display='';$('thI').innerHTML='含領回<br>IRR';$('payc').style.display='block';}
 
 let BX={E:0,Y:0,C:0};
 function labels(){const dm=$('dm').value,hasB=!!(D.BONU&&Object.keys(D.BONU).length),isr=!!M.isr,
   E=hasB&&!isr&&!!(D.BONUCV&&Object.keys(D.BONUCV).length),Y=(hasB||isr)&&(dm=='PUA'||dm=='PS'||dm=='PC'),C=(hasB||isr)&&dm!='PUA',cl=(dm=='SAVE'||dm=='PS')?'儲存生息累積':'當年現金紅利';
+  if($('thS'))$('thS').innerHTML=(dm=='PUA'&&hasB)?'生存保險金<br><small>（含紅利增額，增額非保證）</small>':'生存保險金<br><small>（保證）</small>';
   BX={E,Y,C};const L=['B'].concat(E?['E']:[],Y?['Y']:[],C?['C']:[]);
   $('thX').innerHTML=L.length>1?`解約總額<br><small>（${L.join('+')}）</small>`:'解約金<br><small>（B）</small>';
   $('bxr').style.display=L.length>1?'':'none';$('bxlg').style.display=L.length>1?'':'none';$('bxl').textContent=`展開解約總額明細（${L.join('／')}）`;
