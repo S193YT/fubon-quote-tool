@@ -28,4 +28,9 @@ x.addEventListener('click',()=>{q.value='';apply();q.focus();});
 document.addEventListener('keydown',ev=>{if(ev.key=='/'&&!/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)){ev.preventDefault();q.focus();}});
 const u=new URLSearchParams(location.search).get('q');if(u){q.value=u;apply();}
 })();
-</script></body></html>
+</script><script>/*SWREG*/(function(){if(!('serviceWorker' in navigator)||location.protocol!=='https:')return;
+navigator.serviceWorker.register('sw.js').catch(function(){});
+navigator.serviceWorker.addEventListener('message',function(ev){if(!ev.data||ev.data.type!=='qt-updated'||document.getElementById('qtupd'))return;
+var b=document.createElement('div');b.id='qtupd';b.textContent='🔄 網站資料已更新，點此重新整理以顯示最新數字';
+b.style.cssText='position:fixed;left:8px;right:8px;bottom:12px;z-index:9999;background:#c0392b;color:#fff;padding:12px 14px;border-radius:12px;font-size:15px;font-weight:bold;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.3);cursor:pointer';
+b.onclick=function(){location.reload();};document.body.appendChild(b);});})();</script></body></html>
